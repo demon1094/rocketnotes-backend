@@ -10,7 +10,7 @@ class SessionsController {
 
     const user = await knex('users').where({ email }).first()
     if (!user) {
-      throw new AppError('E-mail e/ou senha incorreta', 401)
+      throw new AppError('Usuário não encontrado', 401)
     }
 
     const passwordMatched = await compare(password, user.password)
