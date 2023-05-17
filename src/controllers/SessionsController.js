@@ -8,7 +8,7 @@ class SessionsController {
   async create(request, response) {
     const { email, password } = request.body
 
-    const user = await knex('users').where({ email }).first()
+    const user = await knex('users').where({ email })
     if (!user) {
       throw new AppError('Usuário não encontrado', 401)
     }
